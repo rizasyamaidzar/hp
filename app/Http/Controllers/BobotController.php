@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Bobot;
 use App\Http\Requests\StoreBobotRequest;
 use App\Http\Requests\UpdateBobotRequest;
@@ -13,7 +14,10 @@ class BobotController extends Controller
      */
     public function index()
     {
-        return view("bobot");
+        $bobot = Bobot::all();
+        return view("bobot",[
+            "bobot"=> $bobot
+        ]);
     }
 
     /**
@@ -27,9 +31,15 @@ class BobotController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBobotRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validateDate = $request->validate([
+            "name"=> "required",
+            "bobot" =>"required",
+            "type" =>"required"
+        ]);
+        Bobot::create($validateDate);
+        return redirect('/bobot')->with("success","New Galery has been added!");
     }
 
     /**
@@ -61,6 +71,7 @@ class BobotController extends Controller
      */
     public function destroy(Bobot $bobot)
     {
-        //
+        Bobot::destroy($bobot->id);
+        return redirect('/bobot')->with("success","Category has been Deleted!");
     }
 }

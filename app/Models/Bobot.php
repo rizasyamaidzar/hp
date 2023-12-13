@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Bobot extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'bobot','type'];
+    
+    public function getRouteKeyName(){
+        return('name');
+    }
 }
