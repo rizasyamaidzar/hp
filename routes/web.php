@@ -16,11 +16,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('bobot');
+    return view('dashboard');
 });
 
 Route::get('/bobot', function () {
     return view('bobot');
+});
+
+Route::get('/alternatif', function () {
+    return view('alternatif');
+});
+
+Route::get('/tambahData', function () {
+    return view('tambahDataKriteria');
+});
+
+Route::get('/tambahAlternatif', function () {
+    return view('tambahAlternatif');
+});
+
+Route::get('/signin', function () {
+    return view('login');
 });
 
 Route::resource('/bobot',BobotController::class);
