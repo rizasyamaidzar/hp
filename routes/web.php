@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BobotController;
+use App\Models\Bobot;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('bobot');
 });
+
+Route::get('/bobot', function () {
+    return view('bobot');
+});
+
+Route::resource('/bobot',BobotController::class);
+
