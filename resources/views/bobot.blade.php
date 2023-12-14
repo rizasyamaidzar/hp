@@ -40,7 +40,7 @@
                     {{ $b->type }}
                 </td>
                 <td class="px-6 py-4">
-                <a type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5">Edit</a>
+                <a href="/bobot/{{ $b->name }}/edit" type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5">Edit</a>
                 <form action="/bobot/{{ $b->name  }}" method="post">
                 @method('delete')
                 @csrf

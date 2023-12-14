@@ -54,8 +54,10 @@ class BobotController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Bobot $bobot)
-    {
-        //
+    {   
+        return view("editBobot",[
+            'bobot' => $bobot
+        ]);
     }
 
     /**
