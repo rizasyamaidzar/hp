@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class HP extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nama', 'merk','harga', 'ram', 'memory', 'sinyal', 'layar', 'processor', 'kamera'];
+    
+    public function getRouteKeyName(){
+        return('nama');
+    }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BobotController;
 use App\Models\Bobot;
+use App\Http\Controllers\HPController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,3 +42,4 @@ Route::get('/signin', function () {
 
 Route::resource('/bobot',BobotController::class);
 
+Route::resource('/alternatif',HPController::class);
