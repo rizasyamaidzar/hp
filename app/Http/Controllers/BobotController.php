@@ -92,7 +92,7 @@ class BobotController extends Controller
         return redirect()->back()->with("error","Jumlah Bobot Melebihi dari 100");
         }
         else {
-        Bobot::create($validateDate);
+        Bobot::where("id",$bobot->id)->update($validateDate);
         return redirect('/bobot')->with("success","New Criteria has been Update!");
         }
     }
