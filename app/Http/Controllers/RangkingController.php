@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Bobot;
-use App\Http\Requests\StoreBobotRequest;
-use App\Http\Requests\UpdateBobotRequest;
+use App\Models\HP;
+use Illuminate\Http\Request;
 
-class BobotController extends Controller
+class RangkingController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $bobot = Bobot::all();
-        return view("bobot",[
-            "bobot"=> $bobot
-        ]);
+        
+        return view("rangking");
     }
 
     /**
@@ -33,13 +30,7 @@ class BobotController extends Controller
      */
     public function store(Request $request)
     {
-        $validateDate = $request->validate([
-            "name"=> "required",
-            "bobot" =>"required",
-            "type" =>"required"
-        ]);
-        Bobot::create($validateDate);
-        return redirect('/bobot')->with("success","New Galery has been added!");
+        //
     }
 
     /**
@@ -54,18 +45,16 @@ class BobotController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Bobot $bobot)
-    {   
-        return view("editBobot",[
-            'bobot' => $bobot
-        ]);
+    {
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBobotRequest $request, Bobot $bobot)
+    public function update(Request $request, Bobot $bobot)
     {
-        @dd($request);
+        //
     }
 
     /**
@@ -73,7 +62,6 @@ class BobotController extends Controller
      */
     public function destroy(Bobot $bobot)
     {
-        Bobot::destroy($bobot->id);
-        return redirect('/bobot')->with("success","Category has been Deleted!");
+        //
     }
 }

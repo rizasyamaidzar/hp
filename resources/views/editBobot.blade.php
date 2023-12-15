@@ -1,8 +1,9 @@
 @extends('welcome')
 @section('conten')
 
-    <form method="POST" action="{{ route('bobot.store')}}" class="p-4 md:p-5">
-        @csrf
+<form method="POST" action="/bobot/{{ $bobot->nama }}" class="p-4 md:p-5">
+    @method('put')
+    @csrf
         <div class="grid gap-4 mb-4 grid-cols-2">
             <div class="col-span-2">
                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
@@ -15,7 +16,7 @@
             <div class="col-span-2 sm:col-span-1">
                 <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
                 <select id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="type">
-                    <option value="{{ $bobot->category }}" selected>{{ $bobot->category }}</option>
+                    <option value="cost" selected> Cost </option>
                     <option value="benefit">Benefit</option>
                 </select>
             </div>
