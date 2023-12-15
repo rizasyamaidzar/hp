@@ -13,7 +13,14 @@ class RangkingController extends Controller
      */
     public function index()
     {
-        
+        // $bobot1 = [];
+        // $bobot=Bobot::all();
+        // foreach ($bobot as $b){ 
+        //     $bobot1[] = $b->name;
+        // }
+        // @dd($bobot1);
+
+
         return view("rangking");
     }
 

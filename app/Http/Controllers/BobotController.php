@@ -14,9 +14,11 @@ class BobotController extends Controller
      */
     public function index()
     {
+        $jumlahBobot = Bobot::sum('bobot');
         $bobot = Bobot::all();
         return view("bobot",[
-            "bobot"=> $bobot
+            "bobot"=> $bobot,
+            "jumlah" => $jumlahBobot
         ]);
     }
 
@@ -33,13 +35,22 @@ class BobotController extends Controller
      */
     public function store(Request $request)
     {
+
+        $bobot = Bobot::sum('bobot');
         $validateDate = $request->validate([
             "name"=> "required",
-            "bobot" =>"required",
+            "bobot" =>"required|numeric|max:100",
             "type" =>"required"
         ]);
+        //mengecek apakah saat ini bobot lebih dari 100
+        $jumlahBobot = $validateDate["bobot"] + $bobot ;
+        if  ($jumlahBobot > 100){
+        return redirect()->back()->with("error","Jumlah Bobot Melebihi dari 100");
+        }
+        else {
         Bobot::create($validateDate);
-        return redirect('/bobot')->with("success","New Galery has been added!");
+        return redirect('/bobot')->with("success","New Criteria has been added!");
+        }
     }
 
     /**
@@ -63,9 +74,27 @@ class BobotController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBobotRequest $request, Bobot $bobot)
+    public function update(Request $request, Bobot $bobot)
     {
-        @dd($request);
+        $jumlah = Bobot::sum('bobot');
+        $jumlah-= $bobot->bobot;
+        // @dd($jumlah);
+        $validateDate = $request->validate([
+            "name"=> "required",
+            "bobot" =>"required|numeric|max:100",
+            "type" =>"required"
+        ]);
+        //mengecek apakah saat ini bobot lebih dari 100
+        
+        $jumlahBobot = $validateDate["bobot"] + $jumlah ;
+        // @dd($jumlahBobot);
+        if  ($jumlahBobot > 100){
+        return redirect()->back()->with("error","Jumlah Bobot Melebihi dari 100");
+        }
+        else {
+        Bobot::create($validateDate);
+        return redirect('/bobot')->with("success","New Criteria has been Update!");
+        }
     }
 
     /**
