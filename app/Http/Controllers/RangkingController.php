@@ -7,68 +7,121 @@ use App\Models\HP;
 use Illuminate\Http\Request;
 
 class RangkingController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+{   
+    // Mengambil Bobot
+    public function callBobot()
     {
-        // $bobot1 = [];
-        // $bobot=Bobot::all();
-        // foreach ($bobot as $b){ 
-        //     $bobot1[] = $b->name;
-        // }
-        // @dd($bobot1);
-
-
-        return view("rangking");
+        $bobot = Bobot::all();
+        return view("bobot",["bobot"=> $bobot]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    // Mengambil Alternatif
+    public function callAlternatif()
     {
-        //
+        $alternative = HP::all();
+        return view("alternatif",["alternatif"=> $alternative]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+    // Menghitung Max
+    public function calculateMax(alternatif $alternatif, jmlKriteria $jmlKriteria, bobot $bobot) {
+        $atributMax = [];
+        $max = [];
+        $k = 0;
+        for ($i=0; $i < count($alternatif) && $k < $jmlKriteria; $i++) { 
+            $name = $bobot[$k]->name;
+            for ($j=0; $j < count($alternatif) ; $j++) { 
+                if ($i == $jmlKriteria) {
+                    break;
+                }
+                $atributMax[$j] = $alternatif[$j]->$name;
+            }
+            $max[$i] = max($atributMax);
+            $k++;
+        }
+        return $max;
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Bobot $bobot)
-    {
-        //
+    // Menghitung Min
+    public function calculateMin(alternatif $alternatif, jmlKriteria $jmlKriteria, bobot $bobot) {
+        $atributMin = [];
+        $min = [];
+        $k = 0;
+        for ($i=0; $i < count($alternatif) && $k < $jmlKriteria; $i++) { 
+            $name = $bobot[$k]->name;
+            for ($j=0; $j < count($alternatif) ; $j++) { 
+                if ($i == $jmlKriteria) {
+                    break;
+                }
+                $atributMin[$j] = $alternatif[$j]->$name;
+            }
+            $min[$i] = min($atributMin);
+            $k++;
+        }
+        return $min;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Bobot $bobot)
-    {
-        //
+    // Menghitung normalisasi
+    public function calculateNormalisasi(alternatif $alternatif, jmlKriteria $jmlKriteria, bobot $bobot, max $max, $min) {
+        $l = 0;
+        for ($i=0; $i < count($alternatif) && $l < $jmlKriteria; $i++) { 
+            $name = $bobot[$l]->name;
+            for ($j=0; $j < count($alternatif) ; $j++) { 
+                if ($i == $jmlKriteria) {
+                    break;
+                }
+                $alternatif[$j]->$name = ($alternatif[$j]->$name - $min[$i])/($max[$i] - $min[$i]);
+            }
+            $l++;
+        }
+        return $alternatif;
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Bobot $bobot)
-    {
-        //
+    // Menghitung nilai * beban
+    public function calculateWeight(alternatif $alternatif, jmlKriteria $jmlKriteria, bobot $bobot) {
+        $o = 0;
+        for ($i=0; $i < count($alternatif) && $o < $jmlKriteria; $i++) { 
+            $name = $bobot[$o]->name;
+            for ($j=0; $j < count($alternatif) ; $j++) { 
+                if ($i == $jmlKriteria) {
+                    break;
+                }
+                $alternatif[$j]->$name = $alternatif[$j]->$name * ($bobot[$i]->bobot / 100);
+            }
+            $o++;
+        }
+            return $alternatif;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Bobot $bobot)
-    {
-        //
+    // Menghitung total nilai
+    public function calculateTotal(alternatif $alternatif, jmlKriteria $jmlKriteria, bobot $bobot) {
+        $total = [];
+        for ($i=0; $i < count($alternatif); $i++) {
+            $jumlah = 0;
+            for ($j=0; $j < count($alternatif) ; $j++) { 
+                if ($j == $jmlKriteria) {
+                    break;
+                }
+                $name = $bobot[$j]->name;
+                $jumlah += $alternatif[$i]->$name;
+            }
+            $total[$i] = $jumlah;
+        }
+            return $total;
+    }
+
+    // Menentukan perangkingan
+    public function calculateRangking(totalNilai $totalNilai) {
+        $totalSementara = rsort($totalNilai);
+        $rangking = [];
+        for ($i= 0; $i < count($totalSementara); $i++) {
+            for ($j= 0; $j < count($totalSementara[$i]); $j++) {
+                if ($totalNilai[$i] == $totalSementara[$j]) {
+                    $rangking[] = $j + 1;
+                    break;
+                }
+            }
+        }
+            return $rangking;
     }
 }
+
