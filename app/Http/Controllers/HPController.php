@@ -60,19 +60,19 @@ class HPController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(HP $hP)
+    public function edit(HP $alternatif)
     {
         return view("editAlternatif",[
-            'alternatif' => $hP
+            'alternatif' => $alternatif
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, HP $hP)
+    public function update(Request $request,HP $alternatif)
     {
-        $request->validate([
+        $validateDate = $request->validate([
             'nama' => 'required|string|max:255',
             'merk' => 'required|string|max:255',
             'harga' => 'required|numeric',
@@ -84,27 +84,19 @@ class HPController extends Controller
             'kamera' => 'required|numeric'
         ]);
         
-        if (!$alternatif) {
-            return redirect()->back()->with('error', 'Alternatif not found');
-        }
-        else{
-            HP::where("id",$hP->id)->update($validateDate);
-            return redirect()->route('/alternatif')->with('success', 'Alternatif updated successfully');
+            HP::where("id",$alternatif->id)->update($validateDate);
+            return redirect("alternatif")->with('success', 'Alternatif updated successfully');
 
-        }
         
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(HP $hP)
+    public function destroy(HP $alternatif)
     {
-        if (!$hP) {
-            return redirect('/alternatif')->with("error", "Alternatif not found");
-        }
-    
-        HP::destroy($hP->id);
+       
+        HP::destroy($alternatif->id);
         return redirect('/alternatif')->with("success", "Alternatif has been deleted!");
     }
 }

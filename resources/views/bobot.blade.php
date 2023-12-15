@@ -6,6 +6,7 @@
 <div class="m-2">
   Maksimal Bobot 100, Bobot Sekarang {{ $jumlah }}
 </div>
+
 <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="mb-5 block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
   Create Criteria
 </button>
@@ -86,11 +87,11 @@
             </tr>
         </thead>
         <tbody>
-            @php $nomor=1  @endphp
+            <!-- @php $nomor=1  @endphp -->
             @foreach($bobot as $b)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <td class="px-6 py-4">
-                    {{ $nomor++}}
+                    {{ $loop->iteration }}
                 </td>
                 <td class="px-6 py-4">
                     {{ $b->name }}
