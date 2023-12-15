@@ -62,15 +62,37 @@ class HPController extends Controller
      */
     public function edit(HP $hP)
     {
-        //
+        return view("editAlternatif",[
+            'alternatif' => $hP
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateHPRequest $request, HP $hP)
+    public function update(Request $request, HP $hP)
     {
-        //
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'merk' => 'required|string|max:255',
+            'harga' => 'required|numeric',
+            'ram' => 'required|numeric',
+            'memory' =>'required|numeric',
+            'sinyal' => 'required|numeric',
+            'layar' => 'required|numeric',
+            'processor' => 'required|numeric',
+            'kamera' => 'required|numeric'
+        ]);
+        
+        if (!$alternatif) {
+            return redirect()->back()->with('error', 'Alternatif not found');
+        }
+        else{
+            HP::where("id",$hP->id)->update($validateDate);
+            return redirect()->route('/alternatif')->with('success', 'Alternatif updated successfully');
+
+        }
+        
     }
 
     /**
@@ -78,7 +100,11 @@ class HPController extends Controller
      */
     public function destroy(HP $hP)
     {
+        if (!$hP) {
+            return redirect('/alternatif')->with("error", "Alternatif not found");
+        }
+    
         HP::destroy($hP->id);
-        return redirect('/alternatif')->with("success","Category has been Deleted!");
+        return redirect('/alternatif')->with("success", "Alternatif has been deleted!");
     }
 }
