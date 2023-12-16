@@ -4,12 +4,15 @@
 <div class="container">
 <!-- Modal toggle -->
 <div class="m-2">
-  Maksimal Bobot 100, Bobot Sekarang {{ $jumlah }}
+<span class="font-semibold text-lg">
+    Maksimal Bobot 100, Bobot Sekarang {{ $jumlah }}
+</span>
 </div>
-
-<button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="mb-5 block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-  Create Criteria
-</button>
+<div class="flex px-2">
+    <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="mb-5 me-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+      Buat Kriteria
+    </button>
+</div>
 <!-- ERROR BOBOT -->
     @error('bobot')
         <div id="alert-border-2" class="m-5 flex items-center p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800" role="alert">
@@ -35,7 +38,7 @@
             <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
             </svg>
             <div class="ms-3 text-sm font-medium">
-            {{ session('success') }} 
+            {{ session('success') }}
             </div>
             <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8"  data-dismiss-target="#alert-border-2" aria-label="Close">
             <span class="sr-only">Dismiss</span>
@@ -103,16 +106,18 @@
                     {{ $b->type }}
                 </td>
                 <td class="px-6 py-4">
-                <a href="/bobot/{{ $b->name }}/edit" type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5">Edit</a>
-                <form action="/bobot/{{ $b->name  }}" method="post">
-                @method('delete')
-                @csrf
-                <button onclick="return confirm('Are you sure?')" type="submit" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 ">Hapus</button>
-                </form>    
-            </td>
+                    <div class="flex gap-2">
+                        <a href="/bobot/{{ $b->name }}/edit" type="button" class="focus:outline-none text-white bg-yellow-300 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm p-3"><i class='bx bx-edit-alt text-lg'></i></a>
+                        <form action="/bobot/{{ $b->name  }}" method="post">
+                        @method('delete')
+                        @csrf
+                        <button onclick="return confirm('Are you sure?')" type="submit" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm p-3 "><i class='bx bx-trash text-lg' ></i></button>
+                        </form>
+                    </div>
+                </td>
             </tr>
             @endforeach
-           
+
         </tbody>
     </table>
 </div>
@@ -161,7 +166,7 @@
                             <option value="benefit">Benefit</option>
                         </select>
                     </div>
-                   
+
                 </div>
                 <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
@@ -170,6 +175,6 @@
             </form>
         </div>
     </div>
-</div> 
+</div>
 
 @endsection
