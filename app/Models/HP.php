@@ -9,7 +9,7 @@ class HP extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nama', 'merk','harga', 'ram', 'memory', 'sinyal', 'layar', 'processor', 'kamera'];
+    protected $fillable = ['nama','harga', 'ram', 'memory', 'sinyal', 'layar', 'processor', 'kamera'];
     
     public function getRouteKeyName(){
         return('nama');

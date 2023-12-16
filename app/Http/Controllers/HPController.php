@@ -35,7 +35,6 @@ class HPController extends Controller
     { 
         $validateDate = $request->validate([
             "nama" => "required",
-            "merk" =>"required",
             "harga" =>"required",
             "ram" => "required",
             "memory" =>"required",
@@ -74,11 +73,10 @@ class HPController extends Controller
     {
         $validateDate = $request->validate([
             'nama' => 'required|string|max:255',
-            'merk' => 'required|string|max:255',
             'harga' => 'required|numeric',
             'ram' => 'required|numeric',
             'memory' =>'required|numeric',
-            'sinyal' => 'required|numeric',
+            'sinyal' => 'required|string|max:255',
             'layar' => 'required|numeric',
             'processor' => 'required|numeric',
             'kamera' => 'required|numeric'

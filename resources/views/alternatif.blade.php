@@ -25,9 +25,6 @@
                     Nama 
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Merek
-                </th>
-                <th scope="col" class="px-6 py-3">
                     Harga
                 </th>
                 <th scope="col" class="px-6 py-3">
@@ -52,20 +49,16 @@
                     Action
                 </th>
             </tr>
-            @php $nomor = 1 @endphp
             @foreach($alternatif as $a)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ $nomor++ }}
+                    {{ $loop->iteration }}
                 </th>
                 <td class="px-6 py-4">
                     {{ $a->nama }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ $a->merk }}
-                </td>
-                <td class="px-6 py-4">
-                    {{ $a->harga }}
+                    {{ number_format($a->harga, 0, ',', '.') }}
                 </td>
                 <td class="px-6 py-4">
                     {{ $a->ram }}
@@ -86,12 +79,14 @@
                     {{ $a->kamera }}
                 </td>
                 <td class="px-6 py-4">
-                    <a href="/alternatif/{{ $a->nama }}/edit" type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    <form action="/alternatif/{{ $a->nama }}" method="post">
+                    <div class="flex gap-2">
+                        <a href="/alternatif/{{ $a->nama }}/edit" type="button" class="focus:outline-none text-white bg-yellow-300 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm p-3"><i class='bx bx-edit-alt text-lg'></i></a>
+                        <form action="/alternatif/{{ $a->nama  }}" method="post">
                         @method('delete')
                         @csrf
-                        <button onclick="return confirm('Are you sure?')" type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Hapus</button>
-                    </form>
+                        <button onclick="return confirm('Are you sure?')" type="submit" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm p-3 "><i class='bx bx-trash text-lg' ></i></button>
+                        </form>
+                    </div>
                 </td>
             </tr>
             @endforeach

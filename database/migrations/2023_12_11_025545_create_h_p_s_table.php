@@ -14,13 +14,12 @@ return new class extends Migration
         Schema::create('h_p_s', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('merk');
             $table->integer('harga');
             $table->integer('ram');
             $table->integer('memory');
-            $table->integer('sinyal');
-            $table->integer('layar');
-            $table->integer('processor');
+            $table->string('sinyal');
+            $table->double('layar');
+            $table->double('processor');
             $table->integer('kamera');
             $table->timestamps();
         });
