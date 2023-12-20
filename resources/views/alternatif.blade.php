@@ -57,26 +57,90 @@
                 <td class="px-6 py-4">
                     {{ $a->nama }}
                 </td>
-                <td class="px-6 py-4">
-                    {{ number_format($a->harga, 0, ',', '.') }}
+                <td class="px-6 py-4 text-center">
+                    @if($a->harga == 5)
+                            0-1 jt
+                        @elseif($a->harga == 4)
+                            1-3 jt
+                        @elseif($a->harga == 3)
+                            3-5 jt
+                        @elseif($a->harga == 2)
+                            5-7 jt
+                        @else
+                            >7 jt
+                    @endif
                 </td>
-                <td class="px-6 py-4">
-                    {{ $a->ram }}
+                <td class="px-6 py-4 text-center">
+                    @if($a->ram == 5)
+                        18
+                    @elseif($a->ram == 4)
+                        12
+                    @elseif($a->ram == 3)
+                        8
+                    @elseif($a->ram == 2)
+                        6
+                    @else
+                        4
+                    @endif
                 </td>
-                <td class="px-6 py-4">
-                    {{ $a->memory }}
+                <td class="px-6 py-4 text-center">
+                    @if($a->memory == 5)
+                        512
+                    @elseif($a->memory == 4)
+                        256
+                    @elseif($a->memory == 3)
+                        128
+                    @elseif($a->memory == 2)
+                        64
+                    @else
+                        32
+                    @endif
                 </td>
-                <td class="px-6 py-4">
-                    {{ $a->sinyal }}
+                <td class="px-6 py-4 text-center">
+                    @if($a->sinyal == 3)
+                        5G
+                    @elseif($a->sinyal == 2)
+                        4G
+                    @else
+                        3G
+                    @endif
                 </td>
-                <td class="px-6 py-4">
-                    {{ $a->layar }}
+                <td class="px-6 py-4 text-center">
+                    @if($a->layar == 5)
+                        6.8
+                    @elseif($a->layar == 4)
+                        6.7
+                    @elseif($a->layar == 3)
+                        6.6
+                    @elseif($a->layar == 2)
+                        6.5
+                    @else
+                        6.4
+                    @endif
                 </td>
-                <td class="px-6 py-4">
-                    {{ $a->processor }}
+                <td class="px-6 py-4 text-center">
+                    @if($a->processor == 5)
+                        2.9 Ghz
+                    @elseif($a->processor == 4)
+                        2.7 Ghz
+                    @elseif($a->processor == 3)
+                        2.4 Ghz
+                    @elseif($a->processor == 2)
+                        2.3 Ghz
+                    @else
+                        2.2 Ghz
+                    @endif
                 </td>
-                <td class="px-6 py-4">
-                    {{ $a->kamera }}
+                <td class="px-6 py-4 text-center">
+                    @if($a->kamera == 4)
+                        >48 Mp
+                    @elseif($a->kamera == 3)
+                        32 Mp
+                    @elseif($a->kamera == 2)
+                        16 Mp
+                    @else
+                        8 Mp
+                    @endif
                 </td>
                 <td class="px-6 py-4">
                     <div class="flex gap-2">

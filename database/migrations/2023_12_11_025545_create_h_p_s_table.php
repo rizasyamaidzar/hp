@@ -17,9 +17,9 @@ return new class extends Migration
             $table->integer('harga');
             $table->integer('ram');
             $table->integer('memory');
-            $table->string('sinyal');
-            $table->double('layar');
-            $table->double('processor');
+            $table->integer('sinyal');
+            $table->integer('layar');
+            $table->integer('processor');
             $table->integer('kamera');
             $table->timestamps();
         });

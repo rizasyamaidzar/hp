@@ -11,63 +11,70 @@
             </div>
             <div class="col-span-2 sm:col-span-1">
             <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga</label>
-                <input type="number" name="harga" id="price" value="{{ old('harga',$alternatif->harga) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required="">
+                 <select id="harga" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="harga">
+                    <option value="1" {{ $alternatif->harga == '1' ? 'selected' : '' }} > >7,1 jt</option>
+                    <option value="2"{{ $alternatif->harga == '2' ? 'selected' : '' }}> 5,1-7 jt</option>
+                    <option value="3"{{ $alternatif->harga == '3' ? 'selected' : '' }}> 3,1-5 jt</option>
+                    <option value="4" {{ $alternatif->harga == '4' ? 'selected' : '' }}> 1,1-3 jt</option>
+                    <option value="5" {{ $alternatif->harga == '5' ? 'selected' : '' }}> 0-1 jt</option>
+                </select>
             </div>
             <div class="col-span-2 sm:col-span-1">
                 <label for="ram" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ram</label>
                 <select id="ram" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="ram">
-                    <option value="6" {{ $alternatif->ram == '6' ? 'selected' : '' }} selected> 6 </option>
-                    <option value="8"{{ $alternatif->ram == '8' ? 'selected' : '' }}>8</option>
-                    <option value="12"{{ $alternatif->ram == '12' ? 'selected' : '' }}>12</option>
-                    <option value="16" {{ $alternatif->ram == '16' ? 'selected' : '' }}>16</option>
-                    <option value="18" {{ $alternatif->ram == '18' ? 'selected' : '' }}>18</option>
+                    <option value="1" {{ $alternatif->ram == '1' ? 'selected' : '' }}> 4</option>
+                    <option value="2"{{ $alternatif->ram == '2' ? 'selected' : '' }}>6</option>
+                    <option value="3"{{ $alternatif->ram == '3' ? 'selected' : '' }}>8</option>
+                    <option value="4" {{ $alternatif->ram == '4' ? 'selected' : '' }}>12</option>
+                    <option value="5" {{ $alternatif->ram == '5' ? 'selected' : '' }}>18</option>
                 </select>
             </div>
             <div class="col-span-2 sm:col-span-1">
                 <label for="memory" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Memori</label>
                 <select id="memory" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="memory">
-                    <option value="32" {{ $alternatif->memory == '32' ? 'selected' : '' }} selected> 32 </option>
-                    <option value="64" {{ $alternatif->memory == '64' ? 'selected' : '' }} selected>64</option>
-                    <option value="128" {{ $alternatif->memory == '128' ? 'selected' : '' }} selected>128</option>
-                    <option value="256" {{ $alternatif->memory == '256' ? 'selected' : '' }} selected>256</option>
-                    <option value="512" {{ $alternatif->memory == '512' ? 'selected' : '' }} selected>512</option>
+                    <option value="1" {{ $alternatif->memory == '1' ? 'selected' : '' }} > 32 </option>
+                    <option value="2" {{ $alternatif->memory == '2' ? 'selected' : '' }} >64</option>
+                    <option value="3" {{ $alternatif->memory == '3' ? 'selected' : '' }} >128</option>
+                    <option value="4" {{ $alternatif->memory == '4' ? 'selected' : '' }} >256</option>
+                    <option value="5" {{ $alternatif->memory == '5' ? 'selected' : '' }} >512</option>
                 </select>
             </div>
             <div class="col-span-2 sm:col-span-1">
                 <label for="sinyal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sinyal</label>
                 <select id="sinyal" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="sinyal">
-                    <option value="3G"  {{ $alternatif->sinyal == '3G' ? 'selected' : '' }}  selected> 3G</option>
-                    <option value="4G"  {{ $alternatif->sinyal == '4G' ? 'selected' : '' }} selected>4G</option>
-                    <option value="5G"  {{ $alternatif->memory == '5G' ? 'selected' : '' }} selected>5G</option>
+                    <option value="1" {{ $alternatif->sinyal == '1' ? 'selected' : '' }}> 3G</option>
+                    <option value="2" {{ $alternatif->sinyal == '2' ? 'selected' : '' }}>4G</option>
+                    <option value="3" {{ $alternatif->sinyal == '3' ? 'selected' : '' }}>5G</option>
                 </select>
             </div>
             <div class="col-span-2 sm:col-span-1">
                 <label for="layar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Layar</label>
                 <select id="layar" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="layar">
-                    <option value="6.4"  {{ $alternatif->layar == '6.4' ? 'selected' : '' }} selected>6.4</option>
-                    <option value="6.5"  {{ $alternatif->layar == '6.5' ? 'selected' : '' }} selected>6.5</option>
-                    <option value="6.6"  {{ $alternatif->layar == '6.6' ? 'selected' : '' }} selected>6.6</option>
-                    <option value="6.7"  {{ $alternatif->layar == '6.7' ? 'selected' : '' }} selected>6.7</option>
-                    <option value="6.8"  {{ $alternatif->layar == '6.8' ? 'selected' : '' }} selected>6.8</option>
+                    <option value="1" {{ $alternatif->layar == '1' ? 'selected' : '' }}>6.4</option>
+                    <option value="2" {{ $alternatif->layar == '2' ? 'selected' : '' }}>6.5</option>
+                    <option value="3" {{ $alternatif->layar == '3' ? 'selected' : '' }}>6.6</option>
+                    <option value="4" {{ $alternatif->layar == '4' ? 'selected' : '' }}>6.7</option>
+                    <option value="5" {{ $alternatif->layar == '5' ? 'selected' : '' }}>6.8</option>
                 </select>
             </div>
+
             <div class="col-span-2 sm:col-span-1">
                 <label for="processor" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kecepatan Processor</label>
                 <select id="processor" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="processor">
-                    <option value="2.2" {{ $alternatif->processor == '2.2' ? 'selected' : '' }}  selected> 2.2</option>
-                    <option value="2.4" {{ $alternatif->processor == '2.4' ? 'selected' : '' }}  selected>2.4</option>
-                    <option value="2.6" {{ $alternatif->processor == '2.6' ? 'selected' : '' }}  selected>2.6</option>
-                    <option value="2.8" {{ $alternatif->processor == '2.8' ? 'selected' : '' }}  selected>2.8</option>
-                    <option value="3.0" {{ $alternatif->processor == '3.0' ? 'selected' : '' }}  selected>3.0</option>
+                    <option value="1" {{ $alternatif->processor == '1' ? 'selected' : '' }}  > 2.2</option>
+                    <option value="2" {{ $alternatif->processor == '2' ? 'selected' : '' }}  >2.3</option>
+                    <option value="3" {{ $alternatif->processor == '3' ? 'selected' : '' }}  >2.4</option>
+                    <option value="4" {{ $alternatif->processor == '4' ? 'selected' : '' }}  >2.7</option>
+                    <option value="5" {{ $alternatif->processor == '5' ? 'selected' : '' }}  >2.9</option>
                 </select>
             </div>
             <div class="col-span-2 sm:col-span-1">
                 <label for="kamera" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kamera</label>
                 <select id="kamera" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="kamera">
-                    <option value="8" {{ $alternatif->kamera == '8' ? 'selected' : '' }}  selected>8</option>
-                    <option value="16" {{ $alternatif->kamera == '16' ? 'selected' : '' }}  selected>16</option>
-                    <option value="32" {{ $alternatif->kamera == '32' ? 'selected' : '' }}  selected>32</option>
-                    <option value="48" {{ $alternatif->kamera == '48' ? 'selected' : '' }}  selected>48</option>
+                    <option value="1" {{  $alternatif->kamera == '1' ? 'selected' : '' }}>8</option>
+                    <option value="2" {{  $alternatif->kamera == '2' ? 'selected' : '' }}>16</option>
+                    <option value="3" {{  $alternatif->kamera == '3' ? 'selected' : '' }}>32</option>
+                    <option value="4" {{  $alternatif->kamera == '4' ? 'selected' : '' }}>>48</option>
                 </select>
             </div>
             

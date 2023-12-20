@@ -76,7 +76,7 @@ class HPController extends Controller
             'harga' => 'required|numeric',
             'ram' => 'required|numeric',
             'memory' =>'required|numeric',
-            'sinyal' => 'required|string|max:255',
+            'sinyal' => 'required|numeric',
             'layar' => 'required|numeric',
             'processor' => 'required|numeric',
             'kamera' => 'required|numeric'

@@ -9,64 +9,70 @@
                 <input type="text" name="nama" id="nama"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
             </div>
             <div class="col-span-2 sm:col-span-1">
-                <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga</label>
-                <input type="number" name="harga" id="harga" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required="">
+            <label for="harga" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga</label>
+                <select id="harga" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="harga">
+                    <option value="5" selected> 0-1jt </option>
+                    <option value="4">1-3jt</option>
+                    <option value="3">3-5jt</option>
+                    <option value="2">5-7jt</option>
+                    <option value="1">>7,1jt</option>
+                </select>
             </div>
             <div class="col-span-2 sm:col-span-1">
                 <label for="ram" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ram</label>
                 <select id="ram" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="ram">
-                    <option value="6" selected> 6 </option>
-                    <option value="8">8</option>
-                    <option value="12">12</option>
-                    <option value="16">16</option>
-                    <option value="18">18</option>
+                    <option value="1" selected> 4 </option>
+                    <option value="2">6</option>
+                    <option value="3">8</option>
+                    <option value="4">12</option>
+                    <option value="5">18</option>
                 </select>
             </div>
             <div class="col-span-2 sm:col-span-1">
                 <label for="memory" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Memori</label>
                 <select id="memory" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="memory">
-                    <option value="32" selected> 32 </option>
-                    <option value="64">64</option>
-                    <option value="128">128</option>
-                    <option value="256">256</option>
-                    <option value="512">512</option>
+                    <option value="1" selected> 32 </option>
+                    <option value="2">64</option>
+                    <option value="3">128</option>
+                    <option value="4">256</option>
+                    <option value="5">512</option>
                 </select>
             </div>
             <div class="col-span-2 sm:col-span-1">
                 <label for="sinyal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sinyal</label>
                 <select id="sinyal" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="sinyal">
-                    <option value="3G" selected> 3G</option>
-                    <option value="4G">4G</option>
-                    <option value="5G">5G</option>
+                    <option value="1" selected> 3G</option>
+                    <option value="2">4G</option>
+                    <option value="3">5G</option>
                 </select>
             </div>
             <div class="col-span-2 sm:col-span-1">
                 <label for="layar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Layar</label>
                 <select id="layar" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="layar">
-                    <option value="6.4" selected>6.4</option>
-                    <option value="6.5">6.5</option>
-                    <option value="6.6">6.4</option>
-                    <option value="6.7">6.7</option>
-                    <option value="6.8">6.8</option>
+                    <option value="1" selected>6.4</option>
+                    <option value="2">6.5</option>
+                    <option value="3">6.4</option>
+                    <option value="4">6.7</option>
+                    <option value="5">6.8</option>
                 </select>
             </div>
             <div class="col-span-2 sm:col-span-1">
                 <label for="processor" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kecepatan Processor</label>
                 <select id="processor" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="processor">
-                    <option value="2.2" selected> 2.2</option>
-                    <option value="2.4">2.4</option>
-                    <option value="2.6">2.6</option>
-                    <option value="2.8">2.8</option>
-                    <option value="3.0">3.0</option>
+                    <option value="1" selected> 2.2</option>
+                    <option value="2">2.3</option>
+                    <option value="3">2.4</option>
+                    <option value="4">2.7</option>
+                    <option value="5">2.9</option>
                 </select>
             </div>
             <div class="col-span-2 sm:col-span-1">
                 <label for="kamera" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kamera</label>
                 <select id="kamera" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="kamera">
-                    <option value="8" selected>8</option>
-                    <option value="16">16</option>
-                    <option value="32">32</option>
-                    <option value="48">48</option>
+                    <option value="1" selected>8</option>
+                    <option value="2">16</option>
+                    <option value="3">32</option>
+                    <option value="4"> >48</option>
                 </select>
             </div>
             
