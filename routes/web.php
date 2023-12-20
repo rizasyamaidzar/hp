@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\BobotController;
 use App\Models\Bobot;
-use App\Http\Controllers\HPController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\RangkingController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HPController;
+use App\Http\Controllers\BobotController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BiodataController;
+use App\Http\Controllers\RangkingController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,35 +20,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('dashboard.index');
-// });
-
-Route::get('/bobot', function () {
-    return view('bobot');
-});
-
-Route::get('/alternatif', function () {
-    return view('alternatif');
-});
-
-Route::get('/tambahData', function () {
-    return view('tambahDataKriteria');
-});
-
-Route::get('/tambahAlternatif', function () {
-    return view('tambahAlternatif');
-});
-
-Route::get('/signin', function () {
+Route::get('/', function () {
     return view('login');
 });
 
-Route::resource('/bobot',BobotController::class);
+Route::get('/bobot', function () {
+    return view('bobot');
+})->middleware('auth');
 
-Route::resource('/alternatif',HPController::class);
+Route::get('/alternatif', function () {
+    return view('alternatif');
+})->middleware('auth');
 
-Route::resource('/ranking',RangkingController::class);
+Route::get('/tambahData', function () {
+    return view('tambahDataKriteria');
+})->middleware('auth');
+
+Route::get('/tambahAlternatif', function () {
+    return view('tambahAlternatif');
+})->middleware('auth');
+
+Route::get('/login',[LoginController::class,'index'])->name('login')->middleware('guest');
+Route::post('/login',[LoginController::class,'authenticate']);
+Route::post('/logout',[LoginController::class,'logout']);
+
+Route::resource('/bobot',BobotController::class)->middleware('auth');
+
+Route::resource('/alternatif',HPController::class)->middleware('auth');
+
+Route::resource('/ranking',RangkingController::class)->middleware('auth');
 // Route::resource('/dashboard',DashboardController::class);
 
-Route::get('/', [DashboardController::class,'index']);
+Route::get('/profil', [BiodataController::class,'index'])->middleware('auth');
+Route::get('/dashboard', [DashboardController::class,'index'])->middleware('auth');
