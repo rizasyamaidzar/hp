@@ -3,6 +3,7 @@
 use App\Http\Controllers\BobotController;
 use App\Models\Bobot;
 use App\Http\Controllers\HPController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RangkingController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+// Route::get('/', function () {
+//     return view('dashboard.index');
+// });
 
 Route::get('/bobot', function () {
     return view('bobot');
@@ -46,3 +47,6 @@ Route::resource('/bobot',BobotController::class);
 Route::resource('/alternatif',HPController::class);
 
 Route::resource('/ranking',RangkingController::class);
+// Route::resource('/dashboard',DashboardController::class);
+
+Route::get('/', [DashboardController::class,'index']);
