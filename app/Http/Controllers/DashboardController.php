@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        
+       
         $alternatifCount = HP::all()->count();
         $bobotCount = Bobot::all()->count();
 

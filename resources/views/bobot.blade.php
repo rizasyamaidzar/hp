@@ -9,9 +9,11 @@
 </span>
 </div>
 <div class="flex px-2">
+    @can('admin')
     <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="mb-5 me-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
       Buat Kriteria
     </button>
+    @endcan
   Maksimal Bobot 100, Bobot {{ $jumlah }}
 
 </div>
@@ -86,9 +88,11 @@
                 <th scope="col" class="px-6 py-3">
                     Type
                 </th>
+                @can('admin')
                 <th scope="col" class="px-6 py-3">
                     Action
                 </th>
+                @endcan
             </tr>
         </thead>
         <tbody>
@@ -107,6 +111,7 @@
                 <td class="px-6 py-4">
                     {{ $b->type }}
                 </td>
+                @can('admin')
                 <td class="px-6 py-4">
                     <div class="flex gap-2">
                         <a href="/bobot/{{ $b->name }}/edit" type="button" class="focus:outline-none text-white bg-yellow-300 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm p-3"><i class='bx bx-edit-alt text-lg'></i></a>
@@ -117,6 +122,7 @@
                         </form>
                     </div>
                 </td>
+                @endcan
             </tr>
             @endforeach
 

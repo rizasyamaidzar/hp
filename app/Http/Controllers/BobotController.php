@@ -14,6 +14,7 @@ class BobotController extends Controller
      */
     public function index()
     {
+        
         $jumlahBobot = Bobot::sum('bobot');
         $bobot = Bobot::all();
         return view("bobot",[
@@ -35,6 +36,7 @@ class BobotController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('admin');
 
         $bobot = Bobot::sum('bobot');
         $validateDate = $request->validate([
@@ -66,6 +68,7 @@ class BobotController extends Controller
      */
     public function edit(Bobot $bobot)
     {   
+        $this->authorize('admin');
         return view("editBobot",[
             'bobot' => $bobot
         ]);
@@ -76,6 +79,7 @@ class BobotController extends Controller
      */
     public function update(Request $request, Bobot $bobot)
     {
+        $this->authorize('admin');
         $jumlah = Bobot::sum('bobot');
         $jumlah-= $bobot->bobot;
         // @dd($jumlah);
@@ -102,6 +106,7 @@ class BobotController extends Controller
      */
     public function destroy(Bobot $bobot)
     {
+        $this->authorize('admin');
         Bobot::destroy($bobot->id);
         return redirect('/bobot')->with("success","Category has been Deleted!");
     }

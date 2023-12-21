@@ -33,6 +33,7 @@ class HPController extends Controller
      */
     public function store(Request $request)
     { 
+        $this->authorize('admin');
         $validateDate = $request->validate([
             "nama" => "required",
             "harga" =>"required",
@@ -61,6 +62,7 @@ class HPController extends Controller
      */
     public function edit(HP $alternatif)
     {
+        $this->authorize('admin');
         return view("editAlternatif",[
             'alternatif' => $alternatif
         ]);
@@ -71,6 +73,7 @@ class HPController extends Controller
      */
     public function update(Request $request,HP $alternatif)
     {
+        $this->authorize('admin');
         $validateDate = $request->validate([
             'nama' => 'required|string|max:255',
             'harga' => 'required|numeric',
@@ -93,7 +96,7 @@ class HPController extends Controller
      */
     public function destroy(HP $alternatif)
     {
-       
+        $this->authorize('admin');
         HP::destroy($alternatif->id);
         return redirect('/alternatif')->with("success", "Alternatif has been deleted!");
     }
